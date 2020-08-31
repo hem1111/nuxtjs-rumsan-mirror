@@ -25,11 +25,28 @@ export default {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
+
+  modules: [
+    // provide path to the file with resources
+    ['nuxt-sass-resources-loader', './assets/main.scss']
+  ],
+  
+
+  loading: { color: 'rgb(221, 209, 209)' },
+
+
   /*
   ** Global CSS
   */
-  css: [
-  ],
+  css: ['~assets/scss/main.scss'],
+    styleResources:{
+      scss: ['~assets/scss/main.scss']
+    },
+    modules:[
+      '@nuxtjs/style-resources',
+      '@nuxtjs/axios'
+    ],
+  
   /*
   ** Plugins to load before mounting the App
   ** https://nuxtjs.org/guide/plugins
@@ -51,13 +68,26 @@ export default {
   */
   modules: [
     // Doc: https://github.com/nuxt-community/modules/tree/master/packages/bulma
-    '@nuxtjs/bulma',
+    // '@nuxtjs/bulma',
   ],
   /*
   ** Build configuration
   ** See https://nuxtjs.org/api/configuration-build/
   */
+
   build: {
+    /*
+    ** Run ESLint on save
+    */
+   extend (config, { isDev, isClient }) {
+    if (isDev && isClient) {
+      config.module.rules.push({
+      enforce: 'pre',
+      test: /\.(js|vue)$/,
+      exclude: /(node_modules)/
+    })
+  }
+},
     postcss: {
       preset: {
         features: {

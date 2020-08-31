@@ -10,11 +10,23 @@
     "serve": "nuxt serve"
   },
   "dependencies": {
-    "@nuxtjs/bulma": "^1.2.7",
+    "@nuxtjs/style-resources": "^1.0.0",
+    "bulma": "^0.9.0",
     "nuxt": "^2.13.0"
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^7.7.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-loader": "^4.0.2",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-vue": "^6.2.2",
     "node-sass": "^4.14.1",
-    "sass-loader": "^9.0.2"
+    "nuxt-sass-resources-loader": "^2.0.5",
+    "prettier": "^2.1.1",
+    "sass-loader": "^9.0.2",
+    "vue": "^2.6.12",
+    "vue-style-loader": "^4.1.2",
+    "vue-template-compiler": "^2.6.12"
   }
 }

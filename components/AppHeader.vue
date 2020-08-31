@@ -1,54 +1,67 @@
 <template>
-    <nav class="navbar is-transparent" style="background: #212331; height: 109px; position: sticky; top: 0;">
+  <section class="hero is-primary is-medium">
+    <!-- Hero head: will stick at the top -->
+    <div class="hero-head">
+      <nav class="navbar is-fixed-top is-spaced has-background-link">
         <div class="container">
-            <div class="navbar-brand">
-                <nuxt-link to="/" class="nav-item">
-                    {{ logo.toUpperCase() }}
-                </nuxt-link>
-            <a role="button" class="navbar-burger burger is-vcentered" aria-label="menu" aria-expanded="false" data-target="navMenu" @click="isOpen = !isOpen" :class="{'is-active':isOpen}">
-                <span aria-hidden='true'></span>
-                <span aria-hidden="true"></span>
-                <span aria-hidden="true"></span>
+          <div class="navbar-brand">
+            <a class="navbar-item">
+              <nuxt-link to="/" class="nav-item">
+                <img src="@/assets/logo.png" alt="logo" width="132px" height="64px" />
+              </nuxt-link>
             </a>
-        </div>
-        <div id="navMenu" class="navbar-menu" :class="{'is-active': isOpen}">
+
+            <span
+              role="button"
+              class="navbar-burger burger"
+              aria-label="menu"
+              aria-expanded="false"
+              data-target="navMenu"
+              @click="isOpen = !isOpen"
+              :class="{'is-active':isOpen}"
+            >
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+              <span aria-hidden="true"></span>
+            </span>
+          </div>
+          <div id="navMenu" class="navbar-menu" :class="{'is-active': isOpen}">
             <div class="navbar-end">
-                <a class="navbar-item navItem" v-for="(nav,index) in navItems" :key="index">
-                    {{ nav.toUpperCase() }}
-            </a>
-            </div> 
+              <a
+                class="navbar-item navItem is-uppercase"
+                v-for="(nav,index) in navItems"
+                :key="index"
+              >{{ nav }}</a>
+            </div>
+          </div>
         </div>
-        </div>
-    </nav>
+      </nav>
+    </div>
+
+    <!-- Hero content: will be in the middle -->
+    <div class="hero-body">
+      <div class="container has-text-centered">
+        <h1 class="title">Title</h1>
+        <h2 class="subtitle">Subtitle</h2>
+      </div>
+    </div>
+  </section>
 </template>
 
 <script>
 export default {
-    name: "AppHeader",
-    data(){
-        return{
-            isOpen: false,
-            navItems: [
-                'about us',
-                'our businesses',
-                'collaborations',
-                'leadership',
-                'contact us'
-            ],
-            logo: 'rumsan'
-        }
-    },
-
-}
+  name: "AppHeader",
+  props: ["navItems", "logo", "isOpen"],
+};
 </script>
 
 <style scoped>
-.navItem{
-    line-height: 25px;
-    font-weight: bold;
-    font-size: 14px;
-    font-family: 'Montserrat';
-    color: #3c3950 !important;
-    padding: 0 15px !important;
+.navItem {
+  line-height: 25px;
+  font-weight: bold;
+  font-size: 14px;
+  font-family: "Montserrat";
+  color: #3c3950 !important;
+  margin-top: 10px;
 }
 </style>
